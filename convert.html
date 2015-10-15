@@ -35,13 +35,25 @@
 		</script>
 	</head>
 	<body>
-		<div align="center">
+		<div class="form-inline" align="center">
 			<div class="form-group">
 				<label>DSCP:</label>
 				<input id="DSCP_input" type="text" onfocusout="check_DSCP_field()"><br>
 			</div>
 			<div class="form-group">
-				<label>TOS:</label>
+				<label>ECN:</label>
+				<input type="text" id="TOS_input" onfocusout=""><br>
+			</div>
+			<button class="btn btn-default" onclick="printLog();">Submit</button>
+		</div>
+		
+		<div class="form-inline" align="center">
+			<div class="form-group">
+				<label>Precedence:</label>
+				<input id="DSCP_input" type="text" onfocusout=""><br>
+			</div>
+			<div class="form-group">
+				<label>Type of Service:</label>
 				<input type="text" id="TOS_input" onfocusout="check_TOS_field()"><br>
 			</div>
 			<button class="btn btn-default" onclick="printLog();">Submit</button>
