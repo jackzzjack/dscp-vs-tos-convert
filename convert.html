@@ -8,20 +8,27 @@
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<!-- Include Jquery Library. -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Callback event -->
+		<script>
+			function printLog() {
+				console.log("Converting");
+			}
+		</script>
 	</head>
 	<body>
 		<div align="center">
-			<form>
-				<div class="form-group">
-					<label>DSCP:</label>
-					<input type="text" name="dscp"><br>
-				</div>
-				<div class="form-group">
-					<label>TOS:</label>
-					<input type="text" name="tos"><br>
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>
+			<div class="form-group">
+				<label>DSCP:</label>
+				<input type="text" name="dscp"><br>
+			</div>
+			<div class="form-group">
+				<label>TOS:</label>
+				<input type="text" name="tos"><br>
+			</div>
+			<button class="btn btn-default" onclick="printLog();">Submit</button>
 		</div>
 	</body>
 </html>
