@@ -88,6 +88,8 @@
 					default:
 						break;
 				}
+				
+				hide_StatusDiv();
 			}
 			
 			function open_DataSection() {
@@ -96,6 +98,10 @@
 			
 			function open_SubmitSection() {
 				document.getElementById('submit').hidden = false;
+			}
+			
+			function hide_StatusDiv() {
+				document.getElementById('check_status').hidden = true;
 			}
 			
 			DSCP_ECN =
@@ -118,13 +124,18 @@
 					<input type="text" id="TOS_input" onfocusout="get_check_TOS_field()"><br>\
 				</div>';
 			
+			STATUS_BAR =
+				'<div id="check_status" class="alert alert-danger form-group" role="alert">\
+					Your data may error.\
+				</div>';
+			
 			function type1_section() {
-				document.getElementById('row1').innerHTML = DSCP_ECN;
+				document.getElementById('row1').innerHTML = DSCP_ECN + '\n' + STATUS_BAR;
 				document.getElementById('row2').innerHTML = IPP_TOS;
 			}
 			
 			function type2_section() {
-				document.getElementById('row1').innerHTML = IPP_TOS;
+				document.getElementById('row1').innerHTML = IPP_TOS + '\n' + STATUS_BAR;
 				document.getElementById('row2').innerHTML = DSCP_ECN;
 			}
 			
