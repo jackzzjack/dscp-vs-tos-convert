@@ -16,17 +16,33 @@
 			function printLog() {
 				console.log("Converting");
 			}
+			
+			function check_DSCP_field() {
+				var dscp = document.getElementById('DSCP_input').value;
+				
+				if (dscp > 63) {
+					console.log("DSCP too high.");
+				}
+			}
+			
+			function check_TOS_field() {
+				var tos = document.getElementById('TOS_input').value;
+				
+				if (tos > 31) {
+					console.log("TOS too high.");
+				}
+			}
 		</script>
 	</head>
 	<body>
 		<div align="center">
 			<div class="form-group">
 				<label>DSCP:</label>
-				<input type="text" name="dscp"><br>
+				<input id="DSCP_input" type="text" name="dscp" onfocusout="check_DSCP_field()"><br>
 			</div>
 			<div class="form-group">
 				<label>TOS:</label>
-				<input type="text" name="tos"><br>
+				<input type="text" name="tos" onfocusout="check_TOS_field()"><br>
 			</div>
 			<button class="btn btn-default" onclick="printLog();">Submit</button>
 		</div>
