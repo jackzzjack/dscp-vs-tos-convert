@@ -20,6 +20,10 @@
 				var ecn = get_check_ECN_field();
 				var ipp = get_check_IPP_field();
 				
+				if (dscp == -1 || ecn == -1) {
+					open_StatusDiv();
+				}
+				
 				// Result
 				// DSCP-ECN => IPP-TOS
 				document.getElementById('TOS_input').value = (dscp & 7) << 2 | ecn;
@@ -89,7 +93,7 @@
 						break;
 				}
 				
-				hide_StatusDiv();
+		//		hide_StatusDiv();
 			}
 			
 			function open_DataSection() {
@@ -98,10 +102,10 @@
 			
 			function open_SubmitSection() {
 				document.getElementById('submit').hidden = false;
-			}
+			} 
 			
-			function hide_StatusDiv() {
-				document.getElementById('check_status').hidden = true;
+			function open_StatusDiv() {
+				document.getElementById('check_status').style.visibility = "visible";
 			}
 			
 			DSCP_ECN =
@@ -125,7 +129,7 @@
 				</div>';
 			
 			STATUS_BAR =
-				'<div id="check_status" class="alert alert-danger form-group" role="alert">\
+				'<div id="check_status" class="alert alert-danger form-group" role="alert" style="visibility: hidden;">\
 					Your data may error.\
 				</div>';
 			
@@ -156,7 +160,7 @@
 			</div>
 		</div>
 		
-		<div id="data" hidden="true">
+		<div id="data">
 			<h1>Data</h1>
 			<div class="form-inline" id="row1" align="center">
 				<!-- Fill from Javascript, Function type1_section(); -->
