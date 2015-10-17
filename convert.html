@@ -14,27 +14,55 @@
 		
 		<!-- Callback event -->
 		<script>
+			FLAG_TYPE = 0;
+			LOG_LEVEL = 0;
+			
+			function logd(msg) {
+				if (LOG_LEVEL)
+					console.log(msg);
+			}
+			
 			function convert() {
 				var dscp = get_check_DSCP_field();
 				var tos = get_check_TOS_field();
 				var ecn = get_check_ECN_field();
 				var ipp = get_check_IPP_field();
 				
-				if (dscp == -1 || ecn == -1) {
-					open_StatusDiv();
+				switch (FLAG_TYPE) {
+					case 1:
+						if (dscp == -1 || ecn == -1) {
+							open_StatusDiv();
+							
+							return;
+						}
+						
+						// Result
+						// DSCP-ECN => IPP-TOS
+						document.getElementById('TOS_input').value = (dscp & 7) << 2 | ecn;
+						document.getElementById('IPP_input').value = (dscp >> 3);
+						
+						break;
+					case 2:
+						if (tos == -1 || ipp == -1) {
+							open_StatusDiv();
+							
+							return;
+						}
+						
+						// Result
+						// DSCP-ECN => IPP-TOS
+						document.getElementById('DSCP_input').value = 2;
+						document.getElementById('ECN_input').value = 1;
+						
+						break;
 				}
-				
-				// Result
-				// DSCP-ECN => IPP-TOS
-				document.getElementById('TOS_input').value = (dscp & 7) << 2 | ecn;
-				document.getElementById('IPP_input').value = (dscp >> 3);
 			}
 			
 			function get_check_DSCP_field() {
 				var dscp = document.getElementById('DSCP_input').value;
 				
 				if (dscp > 63) {
-					console.log("DSCP too high.");
+					logd("DSCP too high.");
 					
 					return -1;
 				}
@@ -46,7 +74,7 @@
 				var tos = document.getElementById('TOS_input').value;
 				
 				if (tos > 31) {
-					console.log("TOS too high.");
+					logd("TOS too high.");
 					
 					return -1;
 				}
@@ -58,7 +86,7 @@
 				var ecn = document.getElementById('ECN_input').value;
 				
 				if (ecn > 3) {
-					console.log("ECN too high.");
+					logd("ECN too high.");
 					
 					return -1;
 				}
@@ -70,7 +98,7 @@
 				var ipp = document.getElementById('IPP_input').value;
 				
 				if (ipp > 7) {
-					console.log("IP Precedence too high.");
+					logd("IP Precedence too high.");
 					
 					return -1;
 				}
@@ -92,8 +120,6 @@
 					default:
 						break;
 				}
-				
-		//		hide_StatusDiv();
 			}
 			
 			function open_DataSection() {
@@ -134,11 +160,15 @@
 				</div>';
 			
 			function type1_section() {
+				FLAG_TYPE = 1;
+				
 				document.getElementById('row1').innerHTML = DSCP_ECN + '\n' + STATUS_BAR;
 				document.getElementById('row2').innerHTML = IPP_TOS;
 			}
 			
 			function type2_section() {
+				FLAG_TYPE = 2;
+			
 				document.getElementById('row1').innerHTML = IPP_TOS + '\n' + STATUS_BAR;
 				document.getElementById('row2').innerHTML = DSCP_ECN;
 			}
