@@ -109,6 +109,7 @@
 			function optionClick(type) {
 				open_DataSection();
 				open_SubmitSection();
+				open_ConvertSection();
 				
 				switch (type) {
 					case 1:
@@ -133,29 +134,33 @@
 			function open_StatusDiv() {
 				document.getElementById('check_status').style.visibility = "visible";
 			}
+
+			function open_ConvertSection() {
+				document.getElementById('convert').hidden = false;
+			}
 			
 			DSCP_ECN =
-				'<div class="form-group col-md-offset-1">\
-					<label>DSCP:</label>\
+				'<div class="form-group col-md-6">\
+					<label class="col-md-5">DSCP:</label>\
 					<input id="DSCP_input" type="text" onfocusout="get_check_DSCP_field()"><br>\
 				</div>\
-				<div class="form-group col-md-offset-1">\
-					<label>ECN:</label>\
+				<div class="form-group col-md-6">\
+					<label class="col-md-5">ECN:</label>\
 					<input type="text" id="ECN_input" onfocusout="get_check_ECN_field()"><br>\
 				</div>';
 					
 			IPP_TOS =
-				'<div class="col-md-6 form-group">\
-					<label>Precedence:</label>\
+				'<div class="form-group col-md-6">\
+					<label class="col-md-5">Precedence:</label>\
 					<input id="IPP_input" type="text" onfocusout="get_check_IPP_field()"><br>\
 				</div>\
-				<div class="col-md-6 form-group">\
-					<label>Type of Service:</label>\
+				<div class="form-group col-md-6">\
+					<label class="col-md-5">Type of Service:</label>\
 					<input type="text" id="TOS_input" onfocusout="get_check_TOS_field()"><br>\
 				</div>';
 			
 			STATUS_BAR =
-				'<div id="check_status" class="alert alert-danger form-group" role="alert" style="visibility: hidden;">\
+				'<div id="check_status" class="alert alert-danger col-md-12" role="alert" style="visibility: hidden;">\
 					Your data may error.\
 				</div>';
 			
@@ -177,9 +182,9 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="col-md-6 col-md-offset-3">
-				<div id="option">
-					<h1>Type</h1>
+			<div class="col-md-8 col-md-offset-2">
+				<div class="row" id="option">
+					<h1>Type <small>Step 1</small></h1>
 					<div class="radio" align="center">
 						<label>
 							<input type="radio" name="optionsRadios" onclick="optionClick(1)">DSCP-ECN to IP Precedence-Type of Service
@@ -192,21 +197,22 @@
 					</div>
 				</div>
 				
-				<div id="data">
-					<h1>Data</h1>
-					<div class="form-inline" id="row1">
+				<div class="row" id="data" hidden="true">
+					<h1>Data <small>Step 2</small></h1>
+					<div class="col-md-12" id="row1">
 						<!-- Fill from Javascript, Function type1_section(); -->
 					</div>
 					
-					<div id="row2">
-						<div class="form-inline">
+					<div class="col-md-12" id="row2">
 							<!-- Fill from Javascript, Function type2_section(); -->
-						</div>
 					</div>
 				</div>
 				
-				<div align="center" id="submit" hidden="true">
-					<button class="btn btn-primary" onclick="convert();">Convert</button>
+				<div class="row" id="convert" hidden="true">
+					<h1>Convert <small>Step 3</small></h1>
+					<div class="col-md-offset-5" id="submit" hidden="true">
+						<button class="btn btn-primary" onclick="convert();">Convert</button>
+					</div>
 				</div>
 			</div>
 		</div>
