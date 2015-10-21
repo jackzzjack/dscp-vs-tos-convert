@@ -12,6 +12,9 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		
+		<!-- Add mobile first (Bootstrap) -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<!-- Callback event -->
 		<script>
 			FLAG_TYPE = 0;
@@ -140,27 +143,27 @@
 			}
 			
 			DSCP_ECN =
-				'<div class="form-group col-md-6">\
-					<label class="col-md-5">DSCP:</label>\
-					<input id="DSCP_input" type="text" onfocusout="get_check_DSCP_field()"><br>\
+				'<div class="form-group col-md-6 col-xs-12">\
+					<label class="col-md-5 col-xs-6">DSCP:</label>\
+					<input id="DSCP_input" class="col-xs-5" type="text" onfocusout="get_check_DSCP_field()"><br>\
 				</div>\
-				<div class="form-group col-md-6">\
-					<label class="col-md-5">ECN:</label>\
-					<input type="text" id="ECN_input" onfocusout="get_check_ECN_field()"><br>\
+				<div class="form-group col-md-6 col-xs-12">\
+					<label class="col-md-5 col-xs-6">ECN:</label>\
+					<input type="text" class="col-xs-5" id="ECN_input" onfocusout="get_check_ECN_field()"><br>\
 				</div>';
 					
 			IPP_TOS =
-				'<div class="form-group col-md-6">\
-					<label class="col-md-5">Precedence:</label>\
-					<input id="IPP_input" type="text" onfocusout="get_check_IPP_field()"><br>\
+				'<div class="form-group col-md-6 col-xs-12">\
+					<label class="col-md-5 col-xs-6">Precedence:</label>\
+					<input id="IPP_input" class="col-xs-5" type="text" onfocusout="get_check_IPP_field()"><br>\
 				</div>\
-				<div class="form-group col-md-6">\
-					<label class="col-md-5">Type of Service:</label>\
-					<input type="text" id="TOS_input" onfocusout="get_check_TOS_field()"><br>\
+				<div class="form-group col-md-6 col-xs-12">\
+					<label class="col-md-5 col-xs-6">Type of Service:</label>\
+					<input type="text" class="col-xs-5" id="TOS_input" onfocusout="get_check_TOS_field()"><br>\
 				</div>';
 			
 			STATUS_BAR =
-				'<div id="check_status" class="alert alert-danger col-md-12" role="alert" style="visibility: hidden;">\
+				'<div id="check_status" class="alert alert-danger col-md-12 col-xs-12" role="alert" style="visibility: hidden;">\
 					Your data may error.\
 				</div>';
 			
@@ -182,7 +185,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="col-md-8 col-md-offset-2">
+			<div class="col-xs-12 col-md-8 col-md-offset-2">
 				<div class="row" id="option">
 					<h1>Type <small>Step 1</small></h1>
 					<div class="radio" align="center">
@@ -199,18 +202,18 @@
 				
 				<div class="row" id="data" hidden="true">
 					<h1>Data <small>Step 2</small></h1>
-					<div class="col-md-12" id="row1">
+					<div class="col-md-12 col-xs-12" id="row1">
 						<!-- Fill from Javascript, Function type1_section(); -->
 					</div>
 					
-					<div class="col-md-12" id="row2">
+					<div class="col-md-12 col-xs-12" id="row2">
 							<!-- Fill from Javascript, Function type2_section(); -->
 					</div>
 				</div>
 				
 				<div class="row" id="convert" hidden="true">
 					<h1>Convert <small>Step 3</small></h1>
-					<div class="col-md-offset-5" id="submit" hidden="true">
+					<div class="col-md-offset-5 col-xs-offset-5" id="submit" hidden="true">
 						<button class="btn btn-primary" onclick="convert();">Convert</button>
 					</div>
 				</div>
