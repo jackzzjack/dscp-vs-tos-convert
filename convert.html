@@ -172,6 +172,9 @@
 				
 				document.getElementById('row1').innerHTML = DSCP_ECN + '\n' + STATUS_BAR;
 				document.getElementById('row2').innerHTML = IPP_TOS;
+
+				document.getElementById('IPP_input').disabled = true;
+				document.getElementById('TOS_input').disabled = true;
 			}
 			
 			function type2_section() {
@@ -179,6 +182,9 @@
 			
 				document.getElementById('row1').innerHTML = IPP_TOS + '\n' + STATUS_BAR;
 				document.getElementById('row2').innerHTML = DSCP_ECN;
+
+				document.getElementById('DSCP_input').disabled = true;
+				document.getElementById('ECN_input').disabled = true;
 			}
 			
 		</script>
