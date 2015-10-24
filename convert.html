@@ -59,6 +59,44 @@
 						
 						break;
 				}
+				
+				open_Description();
+				fill_Description();
+			}
+			
+			function fill_Description() {
+				document.getElementById('description-dscp').innerHTML = dscp_Description(get_check_DSCP_field());
+				document.getElementById('description-ecn').innerHTML = ecn_Description(get_check_ECN_field());
+				document.getElementById('description-ipp').innerHTML = ipp_Description(get_check_IPP_field());
+				document.getElementById('description-tos').innerHTML = tos_Description(get_check_TOS_field());
+			}
+			
+			/*
+			 *	String -> Number(Dec) -> Binary
+			 */
+			function dscp_Description(dscp) {
+				return Number(dscp).toString(2);
+			}
+			
+			/*
+			 *	String -> Number(Dec) -> Binary
+			 */
+			function tos_Description(tos) {
+				return Number(tos).toString(2);
+			}
+			
+			/*
+			 *	String -> Number(Dec) -> Binary
+			 */
+			function ecn_Description(ecn) {
+				return Number(ecn).toString(2);
+			}
+			
+			/*
+			 *	String -> Number(Dec) -> Binary
+			 */
+			function ipp_Description(ipp) {
+				return Number(ipp).toString(2);
 			}
 			
 			function get_check_DSCP_field() {
@@ -124,6 +162,10 @@
 					default:
 						break;
 				}
+			}
+			
+			function open_Description() {
+				document.getElementById('description').hidden = false;
 			}
 			
 			function open_DataSection() {
@@ -224,25 +266,29 @@
 					</div>
 				</div>
 
-				<div class="row" id="description">
+				<div class="row" id="description" hidden="true">
 					<!-- Fill the result description -->
 					<h2>Result <small>Description</small></h2>
 						<div class="col-md-6">
-							<h4>DSCP-ECN</h4>
+							<h3>DSCP-ECN</h3>
 							<div class="col-md-6">
-								dscp
+								<h4>DSCP</h4>
+								<div id="description-dscp"></div>
 							</div>
 							<div class="col-md-6">
-								ecn
+								<h4>IPP</h4>
+								<div id="description-ecn"></div>
 							</div>
 						</div>
 						<div class="col-md-6">
-							<h4>IPP-TOS</h4>
+							<h3>IPP-TOS</h3>
 							<div class="col-md-6">
-								ipp
+								<h4>IPP</h4>
+								<div id="description-ipp"></div>
 							</div>
 							<div class="col-md-6">
-								tos
+								<h4>TOS</h4>
+								<div id="description-tos"></div>
 							</div>
 						</div>
 					</div>
