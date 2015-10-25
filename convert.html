@@ -65,17 +65,106 @@
 			}
 			
 			function fill_Description() {
+				document.getElementById('Convert-Type').innerHTML = getConvertType(get_check_DSCP_field());
+				
 				document.getElementById('description-dscp').innerHTML = dscp_Description(get_check_DSCP_field());
 				document.getElementById('description-ecn').innerHTML = ecn_Description(get_check_ECN_field());
 				document.getElementById('description-ipp').innerHTML = ipp_Description(get_check_IPP_field());
 				document.getElementById('description-tos').innerHTML = tos_Description(get_check_TOS_field());
 			}
 			
+			function getConvertType(dscp) {
+				var html = "";
+				var dscp_num = Number(dscp);
+				
+				switch (dscp_num) {
+// CS0
+					case parseInt('000000', 2):		// a.k.a CS0, Decimal 0
+						html += "CS0";
+						break;
+// CS1
+					case parseInt('001000', 2):
+						html += "CS1";
+						break;
+					case parseInt('001010', 2):
+						html += "AF11";
+						break;
+					case parseInt('001100', 2):
+						html += "AF12";
+						break;
+					case parseInt('001110', 2):
+						html += "AF13";
+						break;
+// CS2
+					case parseInt('010000', 2):
+						html += "CS2";
+						break;
+					case parseInt('010010', 2):
+						html += "AF21";
+						break;
+					case parseInt('010100', 2):
+						html += "AF22";
+						break;
+					case parseInt('010110', 2):
+						html += "AF23";
+						break;
+// CS3
+					case parseInt('011000', 2):
+						html += "CS3";
+						break;
+					case parseInt('011010', 2):
+						html += "AF31";
+						break;
+					case parseInt('011100', 2):
+						html += "AF32";
+						break;
+					case parseInt('011110', 2):
+						html += "AF33";
+						break;
+// CS4
+					case parseInt('100000', 2):
+						html += "CS4";
+						break;
+					case parseInt('100010', 2):
+						html += "AF41";
+						break;
+					case parseInt('100100', 2):
+						html += "AF42";
+						break;
+					case parseInt('100110', 2):
+						html += "AF43";
+						break;
+// CS5
+					case parseInt('101000', 2):
+						html += "CS5";
+						break;
+					case parseInt('101110', 2):
+						html += "EF";
+						break;
+// CS6
+					case parseInt('110000', 2):
+						html += "CS6";
+						break;
+// CS7
+					case parseInt('111000', 2):
+						html += "CS7";
+						break;
+						
+					default:
+						html += "DNC (a.k.a Do NOT Classify)";
+						break;
+				}
+				
+				return html;
+			}
+			
 			/*
 			 *	String -> Number(Dec) -> Binary
 			 */
 			function dscp_Description(dscp) {
-				return Number(dscp).toString(2);
+				var html = "";
+				
+				return html + Number(dscp).toString(2);
 			}
 			
 			/*
@@ -268,7 +357,14 @@
 
 				<div class="row" id="description" hidden="true">
 					<!-- Fill the result description -->
+					
 					<h2>Result <small>Description</small></h2>
+						<div class="row">
+							<div class="col-md-6 col-md-offset-1">
+								<h4>Type: <small><label id="Convert-Type"></label></h4>
+							</div>
+						</div>
+					
 						<div class="col-md-6">
 							<h3>DSCP-ECN</h3>
 							<div class="col-md-6">
