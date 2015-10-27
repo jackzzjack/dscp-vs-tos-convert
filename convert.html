@@ -18,7 +18,7 @@
 		<!-- Callback event -->
 		<script>
 			FLAG_TYPE = 0;
-			LOG_LEVEL = 0;
+			LOG_LEVEL = 1;
 			
 			function logd(msg) {
 				if (LOG_LEVEL)
@@ -190,6 +190,14 @@
 			
 			function get_check_DSCP_field() {
 				var dscp = document.getElementById('DSCP_input').value;
+
+				// Regular Express
+				var nonDigit = /[\D]/;
+				if (nonDigit.test(dscp) == true) {
+					logd("DSCP have nonDigit character.");
+
+					return -1;
+				}
 				
 				if (dscp > 63) {
 					logd("DSCP too high.");
