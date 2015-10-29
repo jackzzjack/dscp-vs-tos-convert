@@ -65,7 +65,7 @@
 			}
 			
 			function fill_Description() {
-				document.getElementById('Convert-Type').innerHTML = getConvertType(get_check_DSCP_field());
+				document.getElementById('Convert-Type').innerHTML = '<small>' + getConvertType(get_check_DSCP_field());
 				
 				document.getElementById('description-dscp').innerHTML = dscp_Description(get_check_DSCP_field());
 				document.getElementById('description-ecn').innerHTML = ecn_Description(get_check_ECN_field());
@@ -369,7 +369,7 @@
 					<h2>Result <small>Description</small></h2>
 						<div class="row">
 							<div class="col-md-6 col-md-offset-1">
-								<h4>Type: <small><label id="Convert-Type"></label></h4>
+								<h4>Type: <label id="Convert-Type"></label></h4>
 							</div>
 						</div>
 					
