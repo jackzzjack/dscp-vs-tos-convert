@@ -162,6 +162,17 @@
 				
 				return html;
 			}
+
+			// bits means every bits of number added space partition.
+				// Only once. Not recursive.
+			function splitBits(num, bits) {
+				var len = num.length;
+
+				var part1 = num.substring(0, bits);		// Not include end of character, 0 ~ 3
+				var part2 = num.substring(bits, len);
+
+				return part1 + ' ' + part2;
+			}
 			
 			/*
 			 *	String -> Number(Dec) -> Binary
@@ -170,6 +181,7 @@
 				var html = Number(dscp).toString(2);
 
 				html = fillUpBits(html, DSCP_TOTAL_BIT);
+				html = splitBits(html, 3);
 
 				return html;
 			}
@@ -201,6 +213,7 @@
 				var html = Number(tos).toString(2);
 
 				html = fillUpBits(html, TOS_TOTAL_BIT);
+				html = splitBits(html, 3);
 
 				return html;
 			}
