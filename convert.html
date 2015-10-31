@@ -20,6 +20,10 @@
 			FLAG_TYPE = 0;
 			LOG_LEVEL = 0;
 			DSCP_TOTAL_BIT = 6;
+			ECN_TOTAL_BIT = 2;
+
+			IPP_TOTAL_BIT = 3;
+			TOS_TOTAL_BIT = 5;
 			
 			function logd(msg) {
 				if (LOG_LEVEL)
@@ -174,6 +178,9 @@
 				var len = number.length;
 				var ret = number;
 
+
+				// If number length more than bits
+					// Error, return it.
 				if (bits < len) {
 					return -1;
 				}
@@ -191,21 +198,33 @@
 			 *	String -> Number(Dec) -> Binary
 			 */
 			function tos_Description(tos) {
-				return Number(tos).toString(2);
+				var html = Number(tos).toString(2);
+
+				html = fillUpBits(html, TOS_TOTAL_BIT);
+
+				return html;
 			}
 			
 			/*
 			 *	String -> Number(Dec) -> Binary
 			 */
 			function ecn_Description(ecn) {
-				return Number(ecn).toString(2);
+				var html = Number(ecn).toString(2);
+
+				html = fillUpBits(html, ECN_TOTAL_BIT);
+
+				return html;
 			}
 			
 			/*
 			 *	String -> Number(Dec) -> Binary
 			 */
 			function ipp_Description(ipp) {
-				return Number(ipp).toString(2);
+				var html = Number(ipp).toString(2);
+
+				html = fillUpBits(html, IPP_TOTAL_BIT);
+
+				return html;
 			}
 			
 			function get_check_DSCP_field() {
