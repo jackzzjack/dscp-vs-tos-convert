@@ -164,15 +164,27 @@
 			 */
 			function dscp_Description(dscp) {
 				var html = Number(dscp).toString(2);
-				var stringBinary_dscp_len = html.length;
 
-				while (stringBinary_dscp_len < DSCP_TOTAL_BIT) {
-					html = "0" + html;
-
-					stringBinary_dscp_len++;
-				}
+				html = fillUpBits(html, DSCP_TOTAL_BIT);
 
 				return html;
+			}
+
+			function fillUpBits(number, bits) {
+				var len = number.length;
+				var ret = number;
+
+				if (bits < len) {
+					return -1;
+				}
+
+				while (len < bits) {
+					ret = "0" + ret;
+
+					len++;
+				}
+
+				return ret;
 			}
 			
 			/*
