@@ -19,6 +19,7 @@
 		<script>
 			FLAG_TYPE = 0;
 			LOG_LEVEL = 0;
+			DSCP_TOTAL_BIT = 6;
 			
 			function logd(msg) {
 				if (LOG_LEVEL)
@@ -162,9 +163,16 @@
 			 *	String -> Number(Dec) -> Binary
 			 */
 			function dscp_Description(dscp) {
-				var html = "";
-				
-				return html + Number(dscp).toString(2);
+				var html = Number(dscp).toString(2);
+				var stringBinary_dscp_len = html.length;
+
+				while (stringBinary_dscp_len < DSCP_TOTAL_BIT) {
+					html = "0" + html;
+
+					stringBinary_dscp_len++;
+				}
+
+				return html;
 			}
 			
 			/*
