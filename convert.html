@@ -254,6 +254,7 @@
 				open_DataSection();
 				open_SubmitSection();
 				open_ConvertSection();
+				hide_ResultSection();
 				
 				switch (type) {
 					case 1:
@@ -330,6 +331,10 @@
 
 				document.getElementById('DSCP_input').disabled = true;
 				document.getElementById('ECN_input').disabled = true;
+			}
+
+			function hide_ResultSection() {
+				document.getElementById('description').hidden = true;
 			}
 			
 		</script>
