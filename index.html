@@ -1,5 +1,7 @@
 <html>
 	<head>
+		<title>DSCP-ECN and IPP-TOS Converter</title>
+		
 		<!-- Include Jquery Library. -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		
@@ -343,21 +345,21 @@
 			DSCP_ECN =
 				'<div class="form-group col-md-6 col-sm-6 col-xs-12">\
 					<label class="col-md-5 col-xs-6">DSCP:</label>\
-					<input id="DSCP_input" class="col-xs-5" type="text" onfocusout="get_check_DSCP_field()"><br>\
+					<input id="DSCP_input" class="col-xs-5" type="number" onfocusout="get_check_DSCP_field()"><br>\
 				</div>\
 				<div class="form-group col-md-6 col-sm-6 col-xs-12">\
 					<label class="col-md-5 col-xs-6">ECN:</label>\
-					<input type="text" class="col-xs-5" id="ECN_input" onfocusout="get_check_ECN_field()"><br>\
+					<input type="number" class="col-xs-5" id="ECN_input" onfocusout="get_check_ECN_field()"><br>\
 				</div>';
 					
 			IPP_TOS =
 				'<div class="form-group col-md-6 col-sm-6 col-xs-12">\
 					<label class="col-md-5 col-xs-6">Precedence:</label>\
-					<input id="IPP_input" class="col-xs-5" type="text" onfocusout="get_check_IPP_field()"><br>\
+					<input id="IPP_input" class="col-xs-5" type="number" onfocusout="get_check_IPP_field()"><br>\
 				</div>\
 				<div class="form-group col-md-6 col-sm-6 col-xs-12">\
 					<label class="col-md-5 col-xs-6">TOS:</label>\
-					<input type="text" class="col-xs-5" id="TOS_input" onfocusout="get_check_TOS_field()"><br>\
+					<input type="number" class="col-xs-5" id="TOS_input" onfocusout="get_check_TOS_field()"><br>\
 				</div>';
 			
 			STATUS_BAR =
@@ -373,6 +375,8 @@
 
 				document.getElementById('IPP_input').disabled = true;
 				document.getElementById('TOS_input').disabled = true;
+				
+				document.getElementById("DSCP_input").focus();
 			}
 			
 			function type2_section() {
@@ -383,6 +387,8 @@
 
 				document.getElementById('DSCP_input').disabled = true;
 				document.getElementById('ECN_input').disabled = true;
+				
+				document.getElementById("IPP_input").focus();
 			}
 
 			function hide_ResultSection() {
