@@ -26,6 +26,14 @@
 
 			ga('create', 'UA-69925792-1', 'auto');
 			ga('send', 'pageview');
+
+			// Feature detects Navigation Timing API support.
+			if (window.performance) {
+
+			  // Sends the hit, passing `performance.now()` as the timing value.
+			  ga('send', 'timing', 'JS Dependencies', 'load', performance.now());
+			  console.log(performance.now());
+			}
 		</script>
 		<!-- End Google Analytics -->
 
