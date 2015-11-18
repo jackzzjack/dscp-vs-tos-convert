@@ -240,6 +240,12 @@
 				return ecn;
 			}
 			
+			function keyboard_detect(event) {
+				if (event.keyCode == 13) {
+					convert();
+				}
+			}
+			
 			function get_check_IPP_field() {
 				var ipp = document.getElementById('IPP_input').value;
 				
@@ -293,21 +299,21 @@
 			DSCP_ECN =
 				'<div class="form-group col-md-6 col-sm-6 col-xs-12">\
 					<label class="col-md-5 col-xs-6">DSCP:</label>\
-					<input id="DSCP_input" class="col-xs-5" type="number" onfocusout="get_check_DSCP_field()"><br>\
+					<input id="DSCP_input" class="col-xs-5" type="number" onfocusout="get_check_DSCP_field()" onkeypress="keyboard_detect(event);"><br>\
 				</div>\
 				<div class="form-group col-md-6 col-sm-6 col-xs-12">\
 					<label class="col-md-5 col-xs-6">ECN:</label>\
-					<input type="number" class="col-xs-5" id="ECN_input" onfocusout="get_check_ECN_field()"><br>\
+					<input type="number" class="col-xs-5" id="ECN_input" onfocusout="get_check_ECN_field()" onkeypress="keyboard_detect(event);"><br>\
 				</div>';
 					
 			IPP_TOS =
 				'<div class="form-group col-md-6 col-sm-6 col-xs-12">\
 					<label class="col-md-5 col-xs-6">Precedence:</label>\
-					<input id="IPP_input" class="col-xs-5" type="number" onfocusout="get_check_IPP_field()"><br>\
+					<input id="IPP_input" class="col-xs-5" type="number" onfocusout="get_check_IPP_field()" onkeypress="keyboard_detect(event);"><br>\
 				</div>\
 				<div class="form-group col-md-6 col-sm-6 col-xs-12">\
 					<label class="col-md-5 col-xs-6">TOS:</label>\
-					<input type="number" class="col-xs-5" id="TOS_input" onfocusout="get_check_TOS_field()"><br>\
+					<input type="number" class="col-xs-5" id="TOS_input" onfocusout="get_check_TOS_field()" onkeypress="keyboard_detect(event);"><br>\
 				</div>';
 			
 			STATUS_BAR =
