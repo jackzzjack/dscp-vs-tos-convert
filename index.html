@@ -86,8 +86,8 @@
 						
 						// Result
 						// DSCP-ECN => IPP-TOS
-						document.getElementById('DSCP_input').value = 2;
-						document.getElementById('ECN_input').value = 1;
+						document.getElementById('DSCP_input').value = (ipp << 3 | tos >> 2);
+						document.getElementById('ECN_input').value = tos & 3;
 						
 						break;
 				}
