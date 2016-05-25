@@ -53,6 +53,8 @@
 			
 			function initialAllDiv() {
 				document.getElementById('description').hidden = true;
+
+				hidden_StatusDiv();
 			}
 			
 			function convert() {
@@ -67,6 +69,7 @@
 					case 1:
 						if (dscp == -1 || ecn == -1) {
 							open_StatusDiv();
+							clearIPPandTOS();
 							
 							return;
 						}
@@ -80,6 +83,7 @@
 					case 2:
 						if (tos == -1 || ipp == -1) {
 							open_StatusDiv();
+							clearDSCPandECN();
 							
 							return;
 						}
@@ -97,6 +101,16 @@
 
 				// Add GA Event Trace
 				ga('send', 'event', 'Function', 'Convert');
+			}
+
+			function clearIPPandTOS() {
+				document.getElementById('IPP_input').value = "";
+				document.getElementById('TOS_input').value = "";
+			}
+
+			function clearDSCPandECN() {
+				document.getElementById('DSCP_input').value = "";
+				document.getElementById('ECN_input').value = "";
 			}
 			
 			function fill_Description() {
@@ -363,7 +377,15 @@
 			} 
 			
 			function open_StatusDiv() {
+				document.getElementById('row3').hidden = false;
+
 				document.getElementById('check_status').style.visibility = "visible";
+			}
+
+			function hidden_StatusDiv() {
+				document.getElementById('row3').hidden = true;
+
+				document.getElementById('check_status').style.visibility = "hidden";
 			}
 
 			function open_ConvertSection() {
@@ -458,7 +480,7 @@
 						<!-- Fill from Javascript, Function type1_section(); -->
 					</div>
 
-					<div class="col-md-12 col-xs-12" id="row3">
+					<div class="col-md-12 col-xs-12" id="row3" hidden="true">
 						<!-- Fill from Javascript, Function type1_section(); -->
 					</div>
 
