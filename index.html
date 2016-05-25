@@ -371,23 +371,23 @@
 			}
 			
 			DSCP_ECN =
-				'<div class="form-group col-md-6 col-sm-6 col-xs-12">\
-					<label class="col-md-5 col-xs-6">DSCP:</label>\
-					<input id="DSCP_input" class="col-xs-5" type="number" onfocusout="get_check_DSCP_field()" onkeypress="keyboard_detect(event);"><br>\
+				'<div class="form-group col-md-6 col-sm-6 col-xs-6">\
+					<label class="col-md-5 col-xs-8">DSCP:</label>\
+					<input id="DSCP_input" class="col-xs-4" type="number" onfocusout="get_check_DSCP_field()" onkeypress="keyboard_detect(event);"><br>\
 				</div>\
-				<div class="form-group col-md-6 col-sm-6 col-xs-12">\
-					<label class="col-md-5 col-xs-6">ECN:</label>\
-					<input type="number" class="col-xs-5" id="ECN_input" onfocusout="get_check_ECN_field()" onkeypress="keyboard_detect(event);"><br>\
+				<div class="form-group col-md-6 col-sm-6 col-xs-6">\
+					<label class="col-md-5 col-xs-8">ECN:</label>\
+					<input type="number" class="col-xs-4" id="ECN_input" onfocusout="get_check_ECN_field()" onkeypress="keyboard_detect(event);"><br>\
 				</div>';
 					
 			IPP_TOS =
-				'<div class="form-group col-md-6 col-sm-6 col-xs-12">\
-					<label class="col-md-5 col-xs-6">Precedence:</label>\
-					<input id="IPP_input" class="col-xs-5" type="number" onfocusout="get_check_IPP_field()" onkeypress="keyboard_detect(event);"><br>\
+				'<div class="form-group col-md-6 col-sm-6 col-xs-6">\
+					<label class="col-md-5 col-xs-8">IP Pre:</label>\
+					<input id="IPP_input" class="col-xs-4" type="number" onfocusout="get_check_IPP_field()" onkeypress="keyboard_detect(event);"><br>\
 				</div>\
-				<div class="form-group col-md-6 col-sm-6 col-xs-12">\
-					<label class="col-md-5 col-xs-6">TOS:</label>\
-					<input type="number" class="col-xs-5" id="TOS_input" onfocusout="get_check_TOS_field()" onkeypress="keyboard_detect(event);"><br>\
+				<div class="form-group col-md-6 col-sm-6 col-xs-6">\
+					<label class="col-md-5 col-xs-8">TOS:</label>\
+					<input type="number" class="col-xs-4" id="TOS_input" onfocusout="get_check_TOS_field()" onkeypress="keyboard_detect(event);"><br>\
 				</div>';
 			
 			STATUS_BAR =
@@ -398,7 +398,8 @@
 			function type1_section() {
 				FLAG_TYPE = 1;
 				
-				document.getElementById('row1').innerHTML = DSCP_ECN + '\n' + STATUS_BAR;
+				document.getElementById('row1').innerHTML = DSCP_ECN;
+				document.getElementById('row3').innerHTML = STATUS_BAR;
 				document.getElementById('row2').innerHTML = IPP_TOS;
 
 				document.getElementById('IPP_input').disabled = true;
@@ -410,7 +411,8 @@
 			function type2_section() {
 				FLAG_TYPE = 2;
 			
-				document.getElementById('row1').innerHTML = IPP_TOS + '\n' + STATUS_BAR;
+				document.getElementById('row1').innerHTML = IPP_TOS;
+				document.getElementById('row3').innerHTML = STATUS_BAR;
 				document.getElementById('row2').innerHTML = DSCP_ECN;
 
 				document.getElementById('DSCP_input').disabled = true;
@@ -455,6 +457,11 @@
 					<div class="col-md-12 col-xs-12" id="row1">
 						<!-- Fill from Javascript, Function type1_section(); -->
 					</div>
+
+					<div class="col-md-12 col-xs-12" id="row3">
+						<!-- Fill from Javascript, Function type1_section(); -->
+					</div>
+
 					
 					<div class="col-md-12 col-xs-12" id="row2">
 						<!-- Fill from Javascript, Function type2_section(); -->
@@ -478,7 +485,7 @@
 						</div>
 					</div>
 					
-					<div class="col-xs-12 col-md-6 col-sm-12 col-xs-12">
+					<div class="col-xs-12 col-md-6 col-sm-12 col-xs-6">
 						<h3>DSCP-ECN</h3>
 						<div class="col-md-6 col-sm-6 col-xs-6">
 							<h4>DSCP</h4>
@@ -489,7 +496,7 @@
 							<div id="description-ecn"></div>
 						</div>
 					</div>
-					<div class="col-md-6 col-sm-12 col-xs-12">
+					<div class="col-md-6 col-sm-12 col-xs-6">
 						<h3>IPP-TOS</h3>
 					<div class="col-md-6 col-sm-6 col-xs-6">
 							<h4>IPP</h4>
