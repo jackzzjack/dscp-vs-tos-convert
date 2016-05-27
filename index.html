@@ -428,6 +428,8 @@
 				document.getElementById('TOS_input').disabled = true;
 				
 				document.getElementById("DSCP_input").focus();
+
+				document.getElementById('defaultTypeDiv').hidden = false;
 			}
 			
 			function type2_section() {
@@ -441,10 +443,103 @@
 				document.getElementById('ECN_input').disabled = true;
 				
 				document.getElementById("IPP_input").focus();
+
+				document.getElementById('defaultTypeDiv').hidden = true;
 			}
 
 			function hide_ResultSection() {
 				document.getElementById('description').hidden = true;
+			}
+
+			function defaultTypeSelect() {
+				var value = document.getElementById('defaultType').value;
+
+				switch (value) {
+					case "CS0":
+						document.getElementById('DSCP_input').value = 0;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "CS1":
+						document.getElementById('DSCP_input').value = 8;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "AF11":
+						document.getElementById('DSCP_input').value = 10;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "AF12":
+						document.getElementById('DSCP_input').value = 12;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "AF13":
+						document.getElementById('DSCP_input').value = 14;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "CS2":
+						document.getElementById('DSCP_input').value = 16;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "AF21":
+						document.getElementById('DSCP_input').value = 18;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "AF22":
+						document.getElementById('DSCP_input').value = 20;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "AF23":
+						document.getElementById('DSCP_input').value =22;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "CS3":
+						document.getElementById('DSCP_input').value = 24;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "AF31":
+						document.getElementById('DSCP_input').value = 26;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "AF32":
+						document.getElementById('DSCP_input').value = 28;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "AF33":
+						document.getElementById('DSCP_input').value = 30;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "CS4":
+						document.getElementById('DSCP_input').value = 32;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "AF41":
+						document.getElementById('DSCP_input').value = 34;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "AF42":
+						document.getElementById('DSCP_input').value = 36;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "AF43":
+						document.getElementById('DSCP_input').value = 38;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "CS5":
+						document.getElementById('DSCP_input').value = 40;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "EF":
+						document.getElementById('DSCP_input').value = 46;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "CS6":
+						document.getElementById('DSCP_input').value = 48;
+						document.getElementById('ECN_input').value = 0;
+						break;
+					case "CS7":
+						document.getElementById('DSCP_input').value = 56;
+						document.getElementById('ECN_input').value = 0;
+						break;
+				}
 			}
 			
 		</script>
@@ -475,7 +570,34 @@
 				</div>
 				
 				<div class="row" id="data" hidden="true">
-					<h2><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>   Data <small>Step 2</small></h2>
+					<h2><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>   Data <small>Step 2 </small></h2>
+					<div class="row">
+						<div id="defaultTypeDiv" class="col-lg-3 col-lg-offset-8 col-md-3 col-md-offset-8 col-sm-2 col-sm-offset-9 col-xs-5 col-xs-offset-7">
+							<select id='defaultType' class='form-control' onchange='defaultTypeSelect();'>
+								<option value="CS0">CS0</option>
+								<option value="CS1">CS1</option>
+								<option value="AF11">AF11</option>
+								<option value="AF12">AF12</option>
+								<option value="AF13">AF13</option>
+								<option value="CS2">CS2</option>
+								<option value="AF21">AF21</option>
+								<option value="AF22">AF22</option>
+								<option value="AF23">AF23</option>
+								<option value="CS3">CS3</option>
+								<option value="AF31">AF31</option>
+								<option value="AF32">AF32</option>
+								<option value="AF33">AF33</option>
+								<option value="CS4">CS4</option>
+								<option value="AF41">AF41</option>
+								<option value="AF42">AF42</option>
+								<option value="AF43">AF43</option>
+								<option value="CS5">CS5</option>
+								<option value="EF">EF</option>
+								<option value="CS6">CS6</option>
+								<option value="CS7">CS7</option>
+							</select>
+						</div>
+					</div>
 					<div class="col-md-12 col-xs-12" id="row1">
 						<!-- Fill from Javascript, Function type1_section(); -->
 					</div>
